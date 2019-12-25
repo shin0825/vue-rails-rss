@@ -1,24 +1,18 @@
-# README
+# easy RSS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 仕様
+- URLを
+  - 投げると
+    - タイトル保存
 
-Things you may want to cover:
+## 説明
+1. URLを入力してPOSTする
+2. WebスクレイピングでURL先の情報からTitleを抜き出す
+3. URLとTitleを保存する
+4. 一覧画面にて表示される
+5. 一覧画面は日付と時刻が大きく表示され、それらの降順でソートされる
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 後でやる(優先度の高い順)
+1. タグ検索
+2. ログイン
+3. ユーザーごとの投稿の紐付け
