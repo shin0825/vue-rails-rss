@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <router-link :to="{ name: 'LinkNewPage' }">+ ADD</router-link>
     <table>
       <tbody>
         <tr>
@@ -8,7 +9,7 @@
           <th>url</th>
         </tr>
         <tr v-for="link in links" :key="link.id">
-          <td>{{ link.id }}</td>
+          <td><router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">{{ link.id }}</router-link></td>
           <td>{{ link.title }}</td>
           <td>{{ link.url }}</td>
         </tr>

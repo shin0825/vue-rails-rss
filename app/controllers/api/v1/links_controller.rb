@@ -13,7 +13,7 @@ class Api::V1::LinksController < ApplicationController
   end
 
   def show
-
+    render json: @link
   end
 
   def new

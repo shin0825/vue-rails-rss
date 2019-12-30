@@ -9,12 +9,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import LinkIndexPage from 'LinkIndexPage.vue'
+import LinkDetailPage from 'LinkDetailPage.vue'
 import LinkNewPage from 'LinkNewPage.vue'
 
 const router = new VueRouter({
   routes: [
     { path: '/',
       component: LinkIndexPage  },
+    { path: '/links/:id(\\d+)',
+      name: 'LinkDetailPage',
+      component: LinkDetailPage  },
     { path: '/links/new',
       name: 'LinkNewPage',
       component: LinkNewPage    }
