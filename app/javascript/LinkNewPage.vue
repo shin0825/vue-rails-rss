@@ -1,16 +1,19 @@
 <template>
-  <form @submit.prevent="createLink">
-    <div v-if="errors.length != 0">
-      <ul v-for="e in errors" :key="e">
-        <li><font color="red">{{ e }}</font></li>
-      </ul>
-    </div>
-    <div>
-      <label>URL</label>
-      <input v-model="link.url" type="text">
-    </div>
-    <button type="submit">Commit</button>
-  </form>
+  <div>
+    <form @submit.prevent="createLink">
+      <div v-if="errors.length != 0">
+        <ul v-for="e in errors" :key="e">
+          <li><font color="red">{{ e }}</font></li>
+        </ul>
+      </div>
+      <div>
+        <label>URL</label>
+        <input v-model="link.url" type="text">
+      </div>
+      <button type="submit">Commit</button>
+    </form>
+    <router-link :to="{ path: '/' }">back</router-link>
+  </div>
 </template>
 
 <script>
@@ -32,7 +35,7 @@ export default {
         .post('/api/v1/links', this.link)
         .then(response => {
           let e = response.data;
-          this.$router.push({ name: '/LinkNewPage' });
+          this.$router.push({ path: '/' });
         })
         .catch(error => {
           console.error(error);
