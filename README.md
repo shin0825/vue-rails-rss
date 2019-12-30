@@ -1,5 +1,18 @@
 # easy RSS
 
+## 参考にしている資料
+  - Ruby on Rails, Vue.js で始めるモダン WEB アプリケーション入門
+  
+    https://qiita.com/tatsurou313/items/4f18c0d4d231e2fb55f4 #Qiita
+
+  - Active Record コールバック
+  
+    https://railsguides.jp/active_record_callbacks.html
+  
+  - Rails スクレイピングでデータを取得(getメソッド・searchメソッド編)備忘録
+  
+    https://qiita.com/bomber0522/items/19591d18bc5d2b1fc97b #Qiita
+
 ## 仕様
 - URLを
   - 投げると
