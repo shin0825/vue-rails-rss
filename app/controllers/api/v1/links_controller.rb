@@ -1,5 +1,6 @@
 class Api::V1::LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_target_date, only: :index
 
   # 拾えなかったExceptionが発生したら500 Internal server errorを応答する
   rescue_from Exception, with: :render_status_500
@@ -8,7 +9,7 @@ class Api::V1::LinksController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
 
   def index
-    links = Link.divide_monthly('2019-12-01 12:00:00').select(:id, :title, :url)
+    links = Link.select(:id, :title, :url, :created_at).order_by_created_at_desc
     render json: links
   end
 
@@ -43,6 +44,13 @@ class Api::V1::LinksController < ApplicationController
   end
 
   private
+    def set_target_date
+      if params[:year].present? && params[:month].present?
+        @targetDate = Time.zone.local(params[:year], params[:month], 1)
+      else
+        @targetDate = Time.zone.now
+      end
+    end
 
     def link_params
       params.fetch(:link, {}).permit(:title, :url)

@@ -6,12 +6,12 @@
         <tr>
           <th>ID</th>
           <th>title</th>
-          <th>url</th>
+          <th>created at</th>
         </tr>
         <tr v-for="link in links" :key="link.id">
           <td><router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">{{ link.id }}</router-link></td>
-          <td>{{ link.title }}</td>
-          <td>{{ link.url }}</td>
+          <td><a v-bind:href="link.url">{{ link.title }}</a></td>
+          <td>{{ link.created_at }}</td>
         </tr>
       </tbody>
     </table>
