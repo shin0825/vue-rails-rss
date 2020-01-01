@@ -3,6 +3,10 @@ class Link < ApplicationRecord
 
   after_validation :set_title
 
+  def self.divide_monthly(targetDate)
+    return self.where(created_at: targetDate.in_time_zone.all_month).order('created_at desc')
+  end
+
   private
     def set_title
       mechan = Mechanize.new

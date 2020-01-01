@@ -8,7 +8,7 @@ class Api::V1::LinksController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
 
   def index
-    links = Link.select(:id, :title, :url)
+    links = Link.divide_monthly('2019-12-01 12:00:00').select(:id, :title, :url)
     render json: links
   end
 
