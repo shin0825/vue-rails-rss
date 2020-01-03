@@ -12,6 +12,10 @@
   - Rails スクレイピングでデータを取得(getメソッド・searchメソッド編)備忘録
   
     https://qiita.com/bomber0522/items/19591d18bc5d2b1fc97b #Qiita
+    
+  - CSSフレームワーク「Bulma」を利用する時の参考URL
+
+    https://blog.nakamu.life/posts/css-bulma-url
 
 ## 仕様
 - URLを

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import 'bulma/css/bulma.css'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 

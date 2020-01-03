@@ -1,20 +1,26 @@
 <template>
   <div id="app">
     <router-link :to="{ name: 'LinkNewPage' }">+ ADD</router-link>
-    <table>
-      <tbody>
-        <tr>
-          <th>ID</th>
-          <th>title</th>
-          <th>created at</th>
-        </tr>
-        <tr v-for="link in links" :key="link.id">
-          <td><router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">{{ link.id }}</router-link></td>
-          <td><a v-bind:href="link.url">{{ link.title }}</a></td>
-          <td>{{ link.created_at }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="container">
+      <section class="section">
+        <div class="columns is-variable is-12" v-for="link in links" :key="link.id">
+          <div class="column is-10 is-half">
+            <div class="content is-medium">
+              <h2 class="subtitle is-5 has-text-grey">
+                <router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">
+                  {{ link.created_at }}
+                </router-link>
+              </h2>
+              <h1 class="title has-text-black is-3">
+                <a v-bind:href="link.url" target=”_blank” rel=”noopener”>
+                  {{ link.title }}
+                </a>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
