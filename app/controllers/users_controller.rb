@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate!, only: [ :create, :sign_in ]
+
+  def new
+    @user = User.new
+  end
+
   def create
     @user = User.new(user_params)
 
@@ -7,6 +13,7 @@ class UsersController < ApplicationController
     else
       render json: { errors: @user.errors.full_messages }, status: 400
     end
+    # render :new unless @user.save
   end
 
   def sign_in
@@ -15,8 +22,12 @@ class UsersController < ApplicationController
     if @user&.authenticate(@params[:password])
       render json: @user
     else
-      render json: { errors: ['ログインに失敗しました。'] }, status: 401
+      render json: { errors: ["ログインに失敗しました。"] }, status: 401
     end
+  end
+
+  def me
+    render json: current_user
   end
 
   private

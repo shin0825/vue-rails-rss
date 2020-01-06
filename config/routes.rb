@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root to: 'homes#index'
+  get 'sign_up', to: 'users#new'
+  post 'sign_up', to: 'users#create'
   resources :users, only: [ :create ] do
     collection do
       post 'sign_in'
+      get 'me' # ← 追加
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
