@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def sign_in
     @user = User.find_by(account_id: params[:account_id])
 
-    if @user&.authenticate(@params[:password])
+    if @user&.authenticate(params[:password])
       render json: @user
     else
       render json: { errors: ["ログインに失敗しました。"] }, status: 401
