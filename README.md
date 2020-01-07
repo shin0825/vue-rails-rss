@@ -19,6 +19,8 @@
 
   - https://jp.vuejs.org/v2/cookbook/serverless-blog.html
 
+  - https://dev.m6a.jp/entry/2018/11/14/162259
+
 ## 仕様
 - URLを
   - 投げると
