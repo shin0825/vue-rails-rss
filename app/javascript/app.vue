@@ -17,6 +17,7 @@ import VueRouter from 'vue-router'
 import LinkIndexPage from 'LinkIndexPage.vue'
 import LinkDetailPage from 'LinkDetailPage.vue'
 import LinkNewPage from 'LinkNewPage.vue'
+import Login from 'Login.vue'
 import Navbar from './components/Navbar.vue'
 
 const router = new VueRouter({
@@ -28,7 +29,11 @@ const router = new VueRouter({
       component: LinkDetailPage  },
     { path: '/links/new',
       name: 'LinkNewPage',
-      component: LinkNewPage    }
+      component: LinkNewPage    },
+    {
+      path: '/login',
+      component: Login
+    }
   ]
 })
 
