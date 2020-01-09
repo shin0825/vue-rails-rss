@@ -1,6 +1,11 @@
 <template>
   <div>
-    <router-view></router-view>
+    <header>
+      <Navbar/>
+    </header>
+    <main>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 
@@ -12,6 +17,7 @@ import VueRouter from 'vue-router'
 import LinkIndexPage from 'LinkIndexPage.vue'
 import LinkDetailPage from 'LinkDetailPage.vue'
 import LinkNewPage from 'LinkNewPage.vue'
+import Navbar from './components/Navbar.vue'
 
 const router = new VueRouter({
   routes: [
@@ -30,7 +36,10 @@ const router = new VueRouter({
 Vue.use(VueRouter)
 
 export default {
-  router
+  router,
+  components: {
+    Navbar
+  }
 }
 </script>
 

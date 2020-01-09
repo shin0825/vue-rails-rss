@@ -1,6 +1,7 @@
 class Api::V1::LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :set_target_date, only: :index
+  skip_before_action :authenticate!, only: [ :index, :show ]
 
   # 拾えなかったExceptionが発生したら500 Internal server errorを応答する
   rescue_from Exception, with: :render_status_500
