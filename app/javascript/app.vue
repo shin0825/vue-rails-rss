@@ -13,6 +13,8 @@
 import 'bulma/css/bulma.css'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from './store'
+import './bootstrap'
 
 import LinkIndexPage from 'LinkIndexPage.vue'
 import LinkDetailPage from 'LinkDetailPage.vue'
@@ -42,6 +44,7 @@ Vue.use(VueRouter)
 
 export default {
   router,
+  store,
   components: {
     Navbar
   }

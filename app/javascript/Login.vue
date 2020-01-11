@@ -1,25 +1,19 @@
 <template>
   <div>
     <ul>
-      <li
-        @click="tab = 1"
-      >Login</li>
-      <li
-        @click="tab = 2"
-      >Register</li>
+      <li @click="tab = 1">Login</li>
+      <li @click="tab = 2">Register</li>
     </ul>
-    <div v-sow="tab === 1">
-      <div v-show="tab === 1">
-        <form>
-          <label for="login-id">id</label>
-          <input type="text" id="login-id" v-model="loginForm.id">
-          <label for="login-password">Password</label>
-          <input type="password" id="login-password" v-model="loginForm.password">
-          <div>
-            <button type="submit" @submit.prevent="login">login</button>
-          </div>
-        </form>
-      </div>
+    <div v-show="tab === 1">
+      <form @submit.prevent="login">
+        <label for="login-id">id</label>
+        <input type="text" id="login-id" v-model="loginForm.account_id">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" v-model="loginForm.password">
+        <div>
+          <button type="submit">login</button>
+        </div>
+      </form>
     </div>
     <div v-show="tab === 2">Register Form</div>
   </div>
@@ -31,14 +25,20 @@ export default {
     return {
       tab: 1,
       loginForm: {
-        id: '',
+        account_id: '',
         password: ''
       },
     }
   },
   methods: {
-    login () {
-      console.log(this.loginForm)
+    async login () {
+      console.log('test')
+      await this.$store.dispatch('auth/login', this.loginForm)
+      this.$router.push('/')
+    },
+    exec: function () {
+      // 本来はajax通信をする
+      console.log('exec')
     }
   }
 }
