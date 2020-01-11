@@ -21,6 +21,10 @@
 
   - https://dev.m6a.jp/entry/2018/11/14/162259
 
+  - https://qiita.com/OgiharaRyo/items/9949e5a2cda5e48060f0#user
+
+  - https://www.hypertextcandy.com/vue-laravel-tutorial-authentication-part-3/
+
 ## 仕様
 - URLを
   - 投げると
@@ -37,3 +41,11 @@
 1. タグ検索
 2. ログイン
 3. ユーザーごとの投稿の紐付け
+
+## メモ
+
+- https://www.hypertextcandy.com/vue-laravel-tutorial-authentication-part-3/
+
+  ```
+  ストアを作成する際に、インポートした auth.js をモジュールとして登録しています。このように、ストアは種類に応じてモジュールとして分けて作成（認証関係のデータのストア、写真データのストア、などのように）することができます。
+  ```
