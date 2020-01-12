@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const state = {
   user: null
 }
@@ -15,6 +17,7 @@ const mutations = {
 const actions = {
   async login(context, data) {
     const response = await axios.post('/users/sign_in', data)
+    console.log(response.data)
     context.commit('setUser', response.data)
   },
   async currentUser(context) {

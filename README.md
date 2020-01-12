@@ -25,6 +25,8 @@
 
   - https://www.hypertextcandy.com/vue-laravel-tutorial-authentication-part-3/
 
+  - https://tech.medpeer.co.jp/entry/2018/02/26/080000
+
 ## 仕様
 - URLを
   - 投げると

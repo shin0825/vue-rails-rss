@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -32,13 +34,8 @@ export default {
   },
   methods: {
     async login () {
-      console.log('test')
       await this.$store.dispatch('auth/login', this.loginForm)
       this.$router.push('/')
-    },
-    exec: function () {
-      // 本来はajax通信をする
-      console.log('exec')
     }
   }
 }
