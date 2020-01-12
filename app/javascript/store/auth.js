@@ -10,7 +10,6 @@ const getters = {
 
 const mutations = {
   setUser(state, user) {
-    console.log(user)
     state.user = user
   }
 }
@@ -21,9 +20,14 @@ const actions = {
     context.commit('setUser', response.data)
   },
   async currentUser(context) {
-    const response = await axios.get('/users/me')
-    const user = response.data || null
-    context.commit('setUser', user)
+    if (state.user != null) {
+      const headers = {}
+      headers['Content-Type'] = 'application/json'
+      headers['Authorization'] = `Token ${state.user.api_token}`
+      const response = await axios.get('/users/me', headers)
+      const user = response.data || null
+      context.commit('setUser', user)
+    }
   }
 }
 

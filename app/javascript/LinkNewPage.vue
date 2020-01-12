@@ -31,18 +31,24 @@ export default {
   },
   methods: {
     createLink: function() {
-      axios
-        .post('/api/v1/links', this.link)
-        .then(response => {
-          let e = response.data;
-          this.$router.push({ path: '/' });
-        })
-        .catch(error => {
-          console.error(error);
-          if (error.response.data && error.response.data.errors) {
-            this.errors = error.response.data.errors;
-          }
-        });
+      if (this.$store.state.auth.user != null) {
+        const headers = {}
+        headers['Content-Type'] = 'application/json'
+        headers['Authorization'] = `Token ${this.$store.state.auth.user.api_token}`
+
+        axios
+          .post('/api/v1/links', this.link, {headers: headers})
+          .then(response => {
+            let e = response.data;
+            this.$router.push({ path: '/' });
+          })
+          .catch(error => {
+            console.error(error);
+            if (error.response.data && error.response.data.errors) {
+              this.errors = error.response.data.errors;
+            }
+          });
+      }
     }
   }
 }
