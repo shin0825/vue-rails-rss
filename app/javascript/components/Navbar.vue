@@ -4,10 +4,10 @@
       HOME
     </RouterLink>
     <div>
-      <span>
-        username
+      <span v-if="isLogin">
+        {{ username }}
       </span>
-      <div>
+      <div v-else>
         <RouterLink to="/login">
           LOGIN
         </RouterLink>
@@ -15,3 +15,16 @@
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  computed: {
+    isLogin () {
+      return this.$store.getters['auth/check']
+    },
+    username () {
+      return this.$store.getters['auth/username']
+    }
+  }
+}
+</script>

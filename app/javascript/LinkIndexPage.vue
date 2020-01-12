@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <router-link :to="{ name: 'LinkNewPage' }">+ ADD</router-link>
     <div class="container">
       <section class="section">
