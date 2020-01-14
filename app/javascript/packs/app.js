@@ -4,17 +4,15 @@ import store from '../store'
 import App from '../app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const el = document.body.appendChild(document.createElement('hello'))
-
   const createApp = async () => {
     await store.dispatch('auth/currentUser')
 
-    new Vue({
-      el,
+    const app = new Vue({
       router,
       store,
       render: h => h(App)
-    })
+    }).$mount()
+    document.body.appendChild(app.$el)
   }
 
   createApp()
