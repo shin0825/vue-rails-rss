@@ -27,6 +27,10 @@
 
   - https://tech.medpeer.co.jp/entry/2018/02/26/080000
 
+  - 【Ruby on Rails】API のレスポンスを生成するメソッドを紹介 - きゃまなかのブログ
+  
+    https://techblog.kyamanak.com/entry/2017/12/03/185033
+
 ## 仕様
 - URLを
   - 投げると

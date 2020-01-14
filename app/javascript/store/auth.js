@@ -16,18 +16,16 @@ const mutations = {
 
 const actions = {
   async login(context, data) {
-    const response = await axios.post('/users/sign_in', data)
+    const requestOptions = {
+      withCredentials: true
+    };
+    const response = await axios.post('/users/sign_in', data, requestOptions)
     context.commit('setUser', response.data)
   },
   async currentUser(context) {
-    if (state.user != null) {
-      const headers = {}
-      headers['Content-Type'] = 'application/json'
-      headers['Authorization'] = `Token ${state.user.api_token}`
-      const response = await axios.get('/users/me', headers)
-      const user = response.data || null
-      context.commit('setUser', user)
-    }
+    const response = await axios.get('/users/me')
+    const user = response.data || null
+    context.commit('setUser', user)
   }
 }
 
