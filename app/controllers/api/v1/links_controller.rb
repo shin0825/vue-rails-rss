@@ -2,6 +2,7 @@ class Api::V1::LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :set_target_date, only: :index
   # skip_before_action :authenticate!, only: [ :index, :show ]
+  before_action :login_required
 
   # 拾えなかったExceptionが発生したら500 Internal server errorを応答する
   rescue_from Exception, with: :render_status_500
@@ -59,6 +60,10 @@ class Api::V1::LinksController < ApplicationController
 
     def set_link
       @link = Link.find(params[:id])
+    end
+
+    def login_required
+      render json: { errors: [exception] }, status: 201 unless logged_in?
     end
 
     def render_status_404(exception)

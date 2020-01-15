@@ -31,6 +31,8 @@
   
     https://techblog.kyamanak.com/entry/2017/12/03/185033
 
+  - https://ubiqlog.com/archives/13845
+
 ## 仕様
 - URLを
   - 投げると

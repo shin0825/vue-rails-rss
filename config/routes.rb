@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :create ] do
     collection do
       post 'sign_in'
+      delete 'sign_out'
       get 'me' # ← 追加
     end
   end

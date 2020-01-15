@@ -23,6 +23,7 @@ class UsersController < ApplicationController
         response_conflict(:user)
       else
         if @user.save
+          login @user
           # ユーザ登録成功
           response_success(:user, :create)
         else
@@ -37,15 +38,19 @@ class UsersController < ApplicationController
     @user = User.find_by(account_id: params[:account_id])
 
     if @user&.authenticate(params[:password])
-      session[:user_id] = @user.id
+      login @user
       render json: response_fields(@user.to_json)
     else
       render json: { errors: ["ログインに失敗しました。"] }, status: 401
     end
   end
 
+  def sign_out
+    logout
+  end
+
   def me
-    render json: current_user
+    render json: { errors: [exception] }, status: 201 unless logged_in?
   end
 
   private
@@ -64,7 +69,7 @@ class UsersController < ApplicationController
   def response_fields(user_json)
     user_parse = JSON.parse(user_json)
     # レスポンスから除外したいパラメータ
-    response = user_parse.except('api_token', 'created_at', 'updated_at')
+    response = user_parse.except('password_digest','api_token', 'created_at', 'updated_at')
     # JSON を見やすく整形して返す
     JSON.pretty_generate(response)
   end

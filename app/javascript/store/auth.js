@@ -22,6 +22,10 @@ const actions = {
     const response = await axios.post('/users/sign_in', data, requestOptions)
     context.commit('setUser', response.data)
   },
+  async logout(context) {
+    const response = await axios.delete('/users/sign_out')
+    context.commit('setUser', null)
+  },
   async currentUser(context) {
     const response = await axios.get('/users/me')
     const user = response.data || null
