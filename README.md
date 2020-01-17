@@ -33,6 +33,8 @@
 
   - https://ubiqlog.com/archives/13845
 
+  - https://qiita.com/jnchito/items/30ab14ebf29b945559f6#heroku%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
+
 ## 仕様
 - URLを
   - 投げると
