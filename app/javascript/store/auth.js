@@ -19,15 +19,15 @@ const actions = {
     const requestOptions = {
       withCredentials: true
     };
-    const response = await axios.post('/users/sign_in', data, requestOptions)
+    const response = await axios.post('/sign_in', data, requestOptions)
     context.commit('setUser', response.data)
   },
   async logout(context) {
-    const response = await axios.delete('/users/sign_out')
+    const response = await axios.delete('/sign_out')
     context.commit('setUser', null)
   },
   async currentUser(context) {
-    const response = await axios.get('/users/me')
+    const response = await axios.get('/me')
     const user = response.data || null
     context.commit('setUser', user)
   }

@@ -1,20 +1,5 @@
 class ApplicationController < ActionController::Base
-  def login(user)
-    session[:user_id] = user.id
-  end
-
-  def logout
-    session.delete(:user_id)
-    @current_user = nil
-  end
-
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
-
-  def logged_in?
-    @current_user.present?
-  end
+  include SessionsHelper
 
   # 200 Success
   def response_success(class_name, action_name)
