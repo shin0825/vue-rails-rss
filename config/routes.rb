@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   root to: 'homes#index'
   get 'sign_up', to: 'users#new'
   post 'sign_up', to: 'users#create'
