@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def me
-    render json: { errors: [exception] }, status: 201 unless logged_in?
+    # render json: { errors: [exception] }, status: 201 unless logged_in?
   end
 
   private

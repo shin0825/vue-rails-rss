@@ -63,7 +63,7 @@ class Api::V1::LinksController < ApplicationController
     end
 
     def login_required
-      render json: { errors: [exception] }, status: 201 unless logged_in?
+      # render json: { errors: [exception] }, status: 201 unless logged_in?
     end
 
     def render_status_404(exception)
