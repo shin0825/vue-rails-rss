@@ -3,6 +3,9 @@
     <RouterLink to="/">
       HOME
     </RouterLink>
+    <RouterLink v-if="isLogin" :to="{ name: 'LinkNewPage' }">
+      + ADD
+    </RouterLink>
     <div>
       <span v-if="isLogin">
         {{ username }}

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-link :to="{ name: 'LinkNewPage' }">+ ADD</router-link>
     <div class="container">
       <section class="section">
         <div class="columns is-variable is-12" v-for="link in links" :key="link.id">

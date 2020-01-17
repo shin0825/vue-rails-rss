@@ -4,6 +4,7 @@ import LinkIndexPage from 'LinkIndexPage.vue'
 import LinkDetailPage from 'LinkDetailPage.vue'
 import LinkNewPage from 'LinkNewPage.vue'
 import Login from 'Login.vue'
+import store from './store'
 
 // ref. https://jp.vuejs.org/v2/guide/plugins.html#%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%AE%E4%BD%BF%E7%94%A8
 Vue.use(VueRouter)
@@ -21,11 +22,25 @@ const router = new VueRouter({
     {
       path: '/links/new',
       name: 'LinkNewPage',
-      component: LinkNewPage
+      component: LinkNewPage,
+      beforeEnter(to, from, next) {
+        if (store.getters['auth/check']) {
+          next()
+        } else {
+          next('/login')
+        }
+      }
     },
     {
       path: '/login',
-      component: Login
+      component: Login,
+      beforeEnter(to, from, next) {
+        if (store.getters['auth/check']) {
+          next('/')
+        } else {
+          next()
+        }
+      }
     }
   ]
 })
