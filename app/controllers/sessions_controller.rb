@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    response_success("sessions", "new").to_json
   end
 
   def show
