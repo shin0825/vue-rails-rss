@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Link, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # TODO: ファクトリの作成
+  it "正しいURLでない場合、エラーになること" do
+
+  end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'homes#index'
-  get 'sign_up', to: 'users#new'
+  get 'sign_up', to: 'users#new' # TODO: Vue.jsに置き換える
   post 'sign_up', to: 'users#create'
   get    'sign_in', to: 'sessions#new'
   get    'me', to: 'sessions#show'
