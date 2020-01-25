@@ -1,7 +1,14 @@
 class Link < ApplicationRecord
   validates :url, presence: true
+  validate :check_url
 
   after_validation :set_title
+
+  def check_url
+    if url !~ /\A^(http|https)?:\/\/([-\w]+\.)+[-\w]+(\/[-\w.\/?%&=]*)?$\z/
+      errors.add(:url, "の内容が不正です")
+    end
+  end
 
   def self.divide_monthly(targetDate)
     return self.where(created_at: targetDate.in_time_zone.all_month).order('created_at desc')
@@ -13,6 +20,7 @@ class Link < ApplicationRecord
 
   private
     def set_title
+      return if self.errors[:url]
       mechan = Mechanize.new
       page = mechan.get(self.url)
       self.title = page.search('title').inner_text
