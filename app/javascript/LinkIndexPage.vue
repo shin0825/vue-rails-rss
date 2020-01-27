@@ -7,7 +7,7 @@
             <div class="content is-medium">
               <h2 class="subtitle is-5 has-text-grey">
                 <router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">
-                  {{ link.created_at }}
+                  {{ link.created_at | moment }}
                 </router-link>
               </h2>
               <h1 class="title has-text-black is-3">
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import axios from 'axios'
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -40,6 +41,11 @@ export default {
     axios
       .get('/api/v1/links.json')
       .then(response => (this.links = response.data))
+  },
+  filters: {
+    moment: function (date) {
+      return moment(date).format('YYYY/MM/DD HH:mm');
+    }
   }
 }
 </script>
