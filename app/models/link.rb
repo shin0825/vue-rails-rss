@@ -19,8 +19,9 @@ class Link < ApplicationRecord
   end
 
   private
+
     def set_title
-      return if self.errors[:url]
+      return if self.errors[:url].present?
       mechan = Mechanize.new
       page = mechan.get(self.url)
       self.title = page.search('title').inner_text
