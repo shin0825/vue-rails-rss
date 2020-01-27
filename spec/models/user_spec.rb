@@ -12,6 +12,11 @@ RSpec.describe User, type: :model do
 
   # TODO: ファクトリの作成
   it "アカウントidが重複している場合、エラーになること" do
-
+    user = User.new(
+      name: "nyanpoko",
+      account_id: "1",
+      password_digest: "hogefuga",
+    )
+    expect(user).to_not be_valid
   end
 end
