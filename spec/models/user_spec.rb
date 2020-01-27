@@ -11,12 +11,14 @@ RSpec.describe User, type: :model do
   end
 
   # TODO: ファクトリの作成
-  it "アカウントidが重複している場合、エラーになること" do
-    user = User.new(
+  it "is invalid duplicate account_id" do
+    user = FactoryBot.create(:user, account_id: "hoge")
+    dup_user = User.new(
       name: "nyanpoko",
-      account_id: "1",
+      account_id: "hoge",
       password_digest: "hogefuga",
+      api_token: "aeonginko"
     )
-    expect(user).to_not be_valid
+    expect(dup_user).to_not be_valid
   end
 end
