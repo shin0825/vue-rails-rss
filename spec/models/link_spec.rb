@@ -7,11 +7,20 @@ RSpec.describe Link, type: :model do
       url: "http://www.yahoo.co.jp"
     )
     expect(link).to be_valid
+    link = Link.new(
+      url: "http://www.yahoo.co.jp/#/"
+    )
+    expect(link).to be_valid
   end
 
   it "正しいURLでない場合、エラーになること" do
     link = Link.new(
       url: "ttp://www.yahoo.co.jp"
+    )
+    expect(link).to_not be_valid
+
+    link = Link.new(
+      url: "http://www.yahoo.co.jp<"
     )
     expect(link).to_not be_valid
   end
