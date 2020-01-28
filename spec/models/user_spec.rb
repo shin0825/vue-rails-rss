@@ -21,4 +21,9 @@ RSpec.describe User, type: :model do
     )
     expect(dup_user).to_not be_valid
   end
+
+  it "is invalid without account_id" do
+    user = FactoryBot.build(:user, account_id: "")
+    expect(user).to_not be_valid
+  end
 end
