@@ -19,15 +19,14 @@ RSpec.describe 'LinksAPI' do
   describe 'POST /api/v1/links' do
     context 'Normal Parameter' do
       before do
-        user = FactoryBot.create(:user)
-        sign_in user
+        @user = FactoryBot.create(:user)
+        post sign_in_path, params: { :session => { :account_id => user.account_id, :password => user.password } }
         @params = attributes_for(:link)
       end
 
       it 'should be 201 Created' do
         post api_v1_links_path, params: @params
-        puts response
-        # expect(response).to be_success
+        expect(response).to be_success
         expect(response.status).to eq(201)
       end
 
