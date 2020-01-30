@@ -21,7 +21,17 @@
 
   - https://dev.m6a.jp/entry/2018/11/14/162259
 
+  - https://tech.enechange.co.jp/entry/2019/01/31/160037
+
   - https://qiita.com/OgiharaRyo/items/9949e5a2cda5e48060f0#user
+
+  - Railsでログイン機能を自作する
+  
+    http://totutotu.hatenablog.com/entry/2016/08/18/132150
+
+  - https://qiita.com/hxrxchang/items/d51a27f486fcd1612dbf
+
+  - https://stephenhowells.net/rails-5-user-registration-with-devise-vue-js-and-axios/
 
   - https://www.hypertextcandy.com/vue-laravel-tutorial-authentication-part-3/
 
@@ -34,6 +44,12 @@
   - https://ubiqlog.com/archives/13845
 
   - https://qiita.com/jnchito/items/30ab14ebf29b945559f6#heroku%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
+
+  - https://github.com/takahashiakira/tech_for_web/wiki/Rails-Web-API%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88
+
+  - JestでVueコンポーネントとVuexストアの単体テストを書いてみよう!
+  
+    https://qiita.com/karamage/items/e8757282e49e81f4d4eb #Qiita
 
 ## 仕様
 - URLを
