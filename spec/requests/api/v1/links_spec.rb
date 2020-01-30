@@ -19,19 +19,17 @@ RSpec.describe 'LinksAPI' do
   describe 'POST /api/v1/links' do
     context 'Normal Parameter' do
       before do
-        @user = FactoryBot.create(:user)
-        post sign_in_path, params: { :session => { :account_id => user.account_id, :password => user.password } }
-        @params = attributes_for(:link)
+        @headers = { "CONTENT_TYPE" => "application/json" }
       end
 
       it 'should be 201 Created' do
-        post api_v1_links_path, params: @params
-        expect(response).to be_success
-        expect(response.status).to eq(201)
+        post api_v1_links_path, params: '{ "link": { "url":"http://www.google.co.jp" } }', headers: @headers
+        # TODO: 右のコードを復活させる expect(response).not_to be_success
+        expect(response.status).to eq(201) # TODO: 戻り値が200なので修正する
       end
 
       it 'should be increment Link' do
-        expect { post api_v1_links_path, params: @params }.to change(Link, :count).by(1)
+        expect { post api_v1_links_path, params: '{ "link": { "url":"http://www.google.co.jp" } }', headers: @headers }.to change(Link, :count).by(1)
       end
     end
 
@@ -42,7 +40,7 @@ RSpec.describe 'LinksAPI' do
 
       it 'should be 422 Unprocessable Entity' do
         post api_v1_links_path, params: @params
-        # expect(response).not_to be_success
+        # TODO: 右のコードを復活させる expect(response).not_to be_success
         expect(response.status).to eq(422)
       end
 
