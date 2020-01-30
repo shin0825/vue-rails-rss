@@ -51,6 +51,14 @@
   
     https://qiita.com/karamage/items/e8757282e49e81f4d4eb #Qiita
 
+  - RspecでJSONのAPIテストするときはheader情報をつけよう！
+  
+    https://www.tom08.net/entry/2016/08/25/212243
+
+  - Request specのget/postでRequestHeaderを設定する
+  
+    http://tokyo-bluelight.com/2018/08/27/request-spec%E3%81%AEgetpost%E3%81%A7requestheader%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B/
+
 ## 仕様
 - URLを
   - 投げると
