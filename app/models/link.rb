@@ -5,7 +5,7 @@ class Link < ApplicationRecord
   after_validation :set_title
 
   def check_url
-    if url !~ /\A^(http|https)?:\/\/([-\w]+\.)+[-\w]+(\/[-\w.\/?%&=#]*)?$\z/
+    if url !~ /\A^(http|https)?:\/\/([-\w]+\.)+[-\w]+(\/[-\w.\/?%&=#@]*)?$\z/
       errors.add(:url, "の内容が不正です")
     end
   end
