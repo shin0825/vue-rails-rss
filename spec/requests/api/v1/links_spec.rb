@@ -17,6 +17,22 @@ RSpec.describe 'LinksAPI' do
   end
 
   describe 'POST /api/v1/links' do
+    context 'Not Loggined' do
+      before do
+        @headers = { "CONTENT_TYPE" => "application/json" }
+      end
+
+      it 'should be 401 Unauthorized' do
+        post api_v1_links_path, params: '{ "link": { "url":"http://www.google.co.jp" } }', headers: @headers
+        # TODO: 右のコードを復活させる expect(response).not_to be_success
+        expect(response.status).to eq(401)
+      end
+
+      it 'should be increment Link' do
+        expect { post api_v1_links_path, params: @params }.not_to change(Link, :count)
+      end
+    end
+
     context 'Normal Parameter' do
       before do
         @headers = { "CONTENT_TYPE" => "application/json" }
@@ -27,7 +43,7 @@ RSpec.describe 'LinksAPI' do
       it 'should be 201 Created' do
         post api_v1_links_path, params: '{ "link": { "url":"http://www.google.co.jp" } }', headers: @headers
         # TODO: 右のコードを復活させる expect(response).not_to be_success
-        expect(response.status).to eq(201) # TODO: 戻り値が200なので修正する
+        expect(response.status).to eq(201)
       end
 
       it 'should be increment Link' do
