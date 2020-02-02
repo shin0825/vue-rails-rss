@@ -12,7 +12,14 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [{
       path: '/',
-      component: LinkIndexPage
+      component: LinkIndexPage,
+      beforeEnter(to, from, next) {
+        if (store.getters['auth/check']) {
+          next()
+        } else {
+          next('/login')
+        }
+      }
     },
     {
       path: '/links/:id(\\d+)',
