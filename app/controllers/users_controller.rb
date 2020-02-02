@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         if @user.save
           login @user
           # ユーザ登録成功
-          response_success(:user, :create)
+          response_created(:user)
         else
           # 何らかの理由で失敗
           response_internal_server_error
