@@ -1,6 +1,7 @@
 class Api::V1::LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :set_target_date, only: :index
+  before_action :authenticate_user, only: [:show, :new, :edit, :create, :update, :destroy]
   rescue_from Exception, with: :render_status_500
   rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
 
@@ -26,7 +27,7 @@ class Api::V1::LinksController < ApplicationController
 
     if link.save
       # render json: link, status: :created
-      response_success(:link, :create)
+      response_created(:link)
     else
       render json: { errors: link.errors.full_messages }, status: :unprocessable_entity
     end

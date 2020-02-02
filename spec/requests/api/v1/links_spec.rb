@@ -20,6 +20,8 @@ RSpec.describe 'LinksAPI' do
     context 'Normal Parameter' do
       before do
         @headers = { "CONTENT_TYPE" => "application/json" }
+        @user = FactoryBot.create(:user)
+        post sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
       end
 
       it 'should be 201 Created' do
@@ -36,6 +38,8 @@ RSpec.describe 'LinksAPI' do
     context 'Invalid Parameter' do
       before do
         @params = attributes_for(:link, url: '')
+        @user = FactoryBot.create(:user)
+        post sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
       end
 
       it 'should be 422 Unprocessable Entity' do

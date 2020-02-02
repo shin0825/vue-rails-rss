@@ -11,6 +11,10 @@ module SessionsHelper
     current_user.present?
   end
 
+  def authenticate_user
+    response_unauthorized unless logged_in?
+  end
+
   def logout
     session.delete(:user_id)
     @current_user = nil
