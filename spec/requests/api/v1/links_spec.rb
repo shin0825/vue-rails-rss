@@ -24,7 +24,7 @@ RSpec.describe 'LinksAPI' do
 
       it 'should be 401 Unauthorized' do
         post api_v1_links_path, params: '{ "link": { "url":"http://www.google.co.jp" } }', headers: @headers
-        # TODO: 右のコードを復活させる expect(response).not_to be_success
+        expect(response).not_to be_successful
         expect(response.status).to eq(401)
       end
 
@@ -42,7 +42,7 @@ RSpec.describe 'LinksAPI' do
 
       it 'should be 201 Created' do
         post api_v1_links_path, params: '{ "link": { "url":"http://www.google.co.jp" } }', headers: @headers
-        # TODO: 右のコードを復活させる expect(response).not_to be_success
+        expect(response).to be_successful
         expect(response.status).to eq(201)
       end
 
@@ -60,7 +60,7 @@ RSpec.describe 'LinksAPI' do
 
       it 'should be 422 Unprocessable Entity' do
         post api_v1_links_path, params: @params
-        # TODO: 右のコードを復活させる expect(response).not_to be_success
+        expect(response).not_to be_successful
         expect(response.status).to eq(422)
       end
 
