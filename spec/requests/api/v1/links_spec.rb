@@ -2,17 +2,32 @@ require 'rails_helper'
 
 RSpec.describe 'LinksAPI' do
   describe 'GET /api/v1/links' do
-    it 'is get all Record of Links' do
-      FactoryBot.create_list(:link, 10)
+    before do
+      @user = FactoryBot.create(:user)
+      FactoryBot.create_list(:link, 10, user_id: @user.id)
+    end
 
-      get api_v1_links_path
-      json = JSON.parse(response.body)
+    context 'Not Loggined' do
+      it 'is get all Record of Links' do
+        get api_v1_links_path
+        json = JSON.parse(response.body)
 
-      # リクエスト成功を表す200が返ってきたか確認する。
-      expect(response.status).to eq(200)
+        expect(response.status).to eq(401) #FIXME: 戻り値がおかしいのでAPIのステータス設計を見直す
+      end
+    end
 
-      # 正しい数のデータが返されたか確認する。
-      expect(json.length).to eq(10)
+    context 'On Loggined' do
+      it 'is get all Record of Links' do
+        post sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
+        get api_v1_links_path
+        json = JSON.parse(response.body)
+
+        # リクエスト成功を表す200が返ってきたか確認する。
+        expect(response.status).to eq(200)
+
+        # 正しい数のデータが返されたか確認する。
+        expect(json.length).to eq(10)
+      end
     end
   end
 
