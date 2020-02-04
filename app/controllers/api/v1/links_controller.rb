@@ -6,7 +6,7 @@ class Api::V1::LinksController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
 
   def index
-    links = Link.select(:id, :title, :url, :created_at).order_by_created_at_desc
+    links = current_user.links.select(:id, :title, :url, :created_at).order_by_created_at_desc
     render json: links
   end
 
@@ -23,7 +23,7 @@ class Api::V1::LinksController < ApplicationController
   end
 
   def create
-    link = Link.new(link_params)
+    link = current_user.links.build(link_params)
 
     if link.save
       # render json: link, status: :created
@@ -55,7 +55,7 @@ class Api::V1::LinksController < ApplicationController
     end
 
     def set_link
-      @link = Link.find(params[:id])
+      @link = current_user.links.find(params[:id])
     end
 
     def render_status_404(exception)
