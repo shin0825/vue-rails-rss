@@ -19,6 +19,13 @@ const actions = {
     const requestOptions = {
       withCredentials: true
     };
+    const response = await axios.post('/sign_up', data, requestOptions)
+    context.commit('setUser', response.data)
+  },
+  async login(context, data) {
+    const requestOptions = {
+      withCredentials: true
+    };
     const response = await axios.post('/sign_in', data, requestOptions)
     context.commit('setUser', response.data)
   },
