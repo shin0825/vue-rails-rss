@@ -24,14 +24,4 @@ class SessionsController < ApplicationController
   def destroy
     logout
   end
-
-  private
-
-  def response_fields(user_json)
-    user_parse = JSON.parse(user_json)
-    # レスポンスから除外したいパラメータ
-    response = user_parse.except('password_digest','api_token', 'created_at', 'updated_at')
-    # JSON を見やすく整形して返す
-    JSON.pretty_generate(response)
-  end
 end

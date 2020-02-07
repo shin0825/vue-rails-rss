@@ -1,7 +1,10 @@
 import axios from 'axios'
+import { OK, CONFLICT } from '../util'
 
 const state = {
-  user: null
+  user: null,
+  apiStatus: null,
+  registErrorMessages: null
 }
 const getters = {
   check: state => !!state.user,
@@ -11,16 +14,38 @@ const getters = {
 const mutations = {
   setUser(state, user) {
     state.user = user
+  },
+  setApiStatus(state, status) {
+    state.apiStatus = status
+  },
+  setRegistErrorMessages(state, messages) {
+    state.registErrorMessages = messages
   }
 }
 
 const actions = {
-  async login(context, data) {
+  async regist(context, data) {
+    context.commit('setApiStatus', null)
     const requestOptions = {
       withCredentials: true
     };
     const response = await axios.post('/sign_up', data, requestOptions)
-    context.commit('setUser', response.data)
+      .catch(err => err.response || err)
+
+    if (response.status === OK) {
+      context.commit('setApiStatus', true)
+      context.commit('setUser', response.data)
+      return false
+    }
+
+    context.commit('setApiStatus', false)
+    if (response.status === CONFLICT) {
+      context.commit('setRegistErrorMessages', response.data.errors)
+    } else {
+      context.commit('error/setCode', response.status, {
+        root: true
+      })
+    }
   },
   async login(context, data) {
     const requestOptions = {

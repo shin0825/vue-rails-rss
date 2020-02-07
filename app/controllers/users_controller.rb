@@ -16,13 +16,11 @@ class UsersController < ApplicationController
       response_bad_request
     else
       if User.exists?(account_id: @user.account_id)
-        # 既に登録済みのメールアドレスで登録しようとした場合
-        response_conflict(:user)
+        render status: 409, json: { status: 409, errors: { account_id: { msg: "User Account ID Conflict" } } }
       else
         if @user.save
           login @user
-          # ユーザ登録成功
-          response_created(:user)
+          render json: response_fields(@user.to_json)
         else
           # 何らかの理由で失敗
           response_internal_server_error
@@ -35,6 +33,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :account_id, :password, :password_confirmation)
+    #params.fetch(:user, {}).permit(:name, :account_id, :password, :password_confirmation)
   end
 
   def set_user
