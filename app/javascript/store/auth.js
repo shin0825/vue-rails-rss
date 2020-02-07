@@ -29,7 +29,7 @@ const actions = {
     const requestOptions = {
       withCredentials: true
     };
-    const response = await axios.post('/sign_up', data, requestOptions)
+    const response = await axios.post('/api/v1/sign_up', data, requestOptions)
       .catch(err => err.response || err)
 
     if (response.status === OK) {

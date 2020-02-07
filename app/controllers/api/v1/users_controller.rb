@@ -1,13 +1,4 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: :show
-
-  def show
-    render json: response_fields(@user.to_json)
-  end
-
-  def new
-    @user = User.new
-  end
+class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
@@ -32,12 +23,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :account_id, :password, :password_confirmation)
-    #params.fetch(:user, {}).permit(:name, :account_id, :password, :password_confirmation)
+    params.permit(:account_id, :name, :password, :password_confirmation)
   end
 
-  def set_user
-    @user = User.find_by(id: params[:id])
-    response_not_found(:user) if @user.blank?
-  end
 end

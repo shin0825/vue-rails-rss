@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   root to: 'homes#index'
-  get 'sign_up', to: 'users#new' # TODO: Vue.jsに置き換える
-  post 'sign_up', to: 'users#create'
   get    'sign_in', to: 'sessions#new'
   get    'me', to: 'sessions#show'
   post   'sign_in', to: 'sessions#create'
@@ -11,6 +9,7 @@ Rails.application.routes.draw do
       resources :employees, only: [:index, :show]
       get 'links/:year/:month', to: 'links#index', as: 'links/index'
       resources :links, only: [:index, :show, :create]
+      post 'sign_up', to: 'users#create'
     end
   end
 end
