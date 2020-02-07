@@ -27,7 +27,7 @@
         </div>
         <label for="register-id">id</label>
         <input type="text" id="register-id" v-model="registerForm.account_id">
-        <label for="register-id">Name</label>
+        <label for="register-name">Name</label>
         <input type="text" id="register-id" v-model="registerForm.name">
         <label for="register-password">Password</label>
         <input type="password" id="register-password" v-model="registerForm.password">
