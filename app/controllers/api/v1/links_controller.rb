@@ -1,10 +1,9 @@
 class Api::V1::LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :set_target_date, only: :index
-  before_action :authenticate_user, only: [:show, :new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user, only: [:index, :show, :new, :edit, :create, :update, :destroy]
   rescue_from Exception, with: :render_status_500
   rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
-  rescue_from ActiveResource::UnauthorizedAccess, with: :render_status_401, only: [:show, :new, :edit, :create, :update, :destroy]
 
   def index
     links = current_user.links.select(:id, :title, :url, :created_at).order_by_created_at_desc
