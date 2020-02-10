@@ -4,6 +4,7 @@ class Api::V1::LinksController < ApplicationController
   before_action :authenticate_user, only: [:show, :new, :edit, :create, :update, :destroy]
   rescue_from Exception, with: :render_status_500
   rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
+  rescue_from ActiveResource::UnauthorizedAccess, with: :render_status_401, only: [:show, :new, :edit, :create, :update, :destroy]
 
   def index
     links = current_user.links.select(:id, :title, :url, :created_at).order_by_created_at_desc
