@@ -18,7 +18,7 @@ RSpec.describe 'LinksAPI' do
 
     context 'On Loggined' do
       it 'is get all Record of Links' do
-        post sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
+        post api_v1_sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
         get api_v1_links_path
         json = JSON.parse(response.body)
 
@@ -52,7 +52,7 @@ RSpec.describe 'LinksAPI' do
       before do
         @headers = { "CONTENT_TYPE" => "application/json" }
         @user = FactoryBot.create(:user)
-        post sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
+        post api_v1_sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
       end
 
       it 'should be 201 Created' do
@@ -70,7 +70,7 @@ RSpec.describe 'LinksAPI' do
       before do
         @params = attributes_for(:link, url: '')
         @user = FactoryBot.create(:user)
-        post sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
+        post api_v1_sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
       end
 
       it 'should be 422 Unprocessable Entity' do

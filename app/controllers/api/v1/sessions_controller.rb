@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Api::V1::SessionsController < ApplicationController
   def new
     response_success("sessions", "new").to_json
   end

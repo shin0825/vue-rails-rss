@@ -7,12 +7,12 @@ RSpec.describe 'Sessions' do
     end
 
     it 'is success sign_in' do
-      post sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
+      post api_v1_sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
       expect(response.status).to eq(200)
     end
 
     it 'is error sign_in' do
-      post sign_in_path, params: { :session => { :account_id => @user.account_id, :password => "hogehoge" } }
+      post api_v1_sign_in_path, params: { :session => { :account_id => @user.account_id, :password => "hogehoge" } }
       expect(response.status).to eq(401)
     end
   end
