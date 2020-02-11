@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   delete 'sign_out', to: 'sessions#destroy'
   namespace :api, {format: 'json'} do
     namespace :v1 do
-      resources :employees, only: [:index, :show]
       get 'links/:year/:month', to: 'links#index', as: 'links/index'
       resources :links, only: [:index, :show, :create]
       post 'sign_up', to: 'users#create'
