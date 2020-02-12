@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header>
+    <header id="nav-top" class="nav mb-5">
       <Navbar/>
     </header>
     <main>
@@ -24,5 +24,27 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+@media screen and (min-width: 812px) {
+  #nav-top {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0 auto;
+  }
+}
+
+@media screen and (max-width: 812px) {
+  #nav-top {
+    display: block;
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    z-index: 9999;
+    text-align: center;
+    padding: 1rem;
+    background-color: #62d9a3ee;
+  }
+}
 </style>
