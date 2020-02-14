@@ -4,21 +4,19 @@
       <span v-if="isLogin">
         {{ username }}
         /
-        <button @click="logout">Logout</button>
+        <button class="original-input" @click="logout">LOGOUT</button>
       </span>
-      <div v-else>
-        <RouterLink to="/login">
-          LOGIN
-        </RouterLink>
-      </div>
     </div>
     <div>
       <ul class="flex-box">
-        <li><RouterLink to="/">
+        <li v-if="isLogin"><RouterLink to="/">
           HOME
         </RouterLink></li>
-        <li><RouterLink v-if="isLogin" :to="{ name: 'LinkNewPage' }">
+        <li v-if="isLogin"><RouterLink :to="{ name: 'LinkNewPage' }">
           ADD
+        </RouterLink></li>
+        <li v-else><RouterLink to="/login">
+          LOGIN
         </RouterLink></li>
       </ul>
     </div>
