@@ -58,4 +58,9 @@ export default {
     margin-bottom: 50px;
   }
 }
+
+.original-input {
+  -webkit-appearance: none;
+  border-radius: 5px;
+}
 </style>
