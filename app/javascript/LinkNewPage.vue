@@ -8,9 +8,9 @@
       </div>
       <div>
         <label>URL</label>
-        <input v-model="link.url" type="text">
+        <input v-model="link.url" type="text" class="original-input">
       </div>
-      <button type="submit">Commit</button>
+      <button type="submit" class="original-input">Commit</button>
     </form>
     <router-link :to="{ path: '/' }">back</router-link>
   </div>
@@ -55,4 +55,8 @@ export default {
 </script>
 
 <style scoped>
+p {
+  font-size: 1.2em;
+  text-align: center;
+}
 </style>

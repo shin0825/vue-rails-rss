@@ -7,11 +7,11 @@
     <div v-show="tab === 1">
       <form @submit.prevent="login">
         <label for="login-id">id</label>
-        <input type="text" id="login-id" v-model="loginForm.account_id">
+        <input type="text" id="login-id" class="original-input" v-model="loginForm.account_id">
         <label for="login-password">Password</label>
-        <input type="password" id="login-password" v-model="loginForm.password">
+        <input type="password" id="login-password" class="original-input" v-model="loginForm.password">
         <div>
-          <button type="submit">login</button>
+          <button type="submit" class="original-input">login</button>
         </div>
       </form>
     </div>
@@ -26,15 +26,15 @@
           </ul>
         </div>
         <label for="register-id">id</label>
-        <input type="text" id="register-id" v-model="registerForm.account_id">
+        <input type="text" id="register-id" class="original-input" v-model="registerForm.account_id">
         <label for="register-name">Name</label>
-        <input type="text" id="register-id" v-model="registerForm.name">
+        <input type="text" id="register-id" class="original-input" v-model="registerForm.name">
         <label for="register-password">Password</label>
-        <input type="password" id="register-password" v-model="registerForm.password">
+        <input type="password" id="register-password" class="original-input" v-model="registerForm.password">
         <label for="register-password_confirmation">Password(確認)</label>
-        <input type="password" id="register-password_confirmation" v-model="registerForm.password_confirmation">
+        <input type="password" id="register-password_confirmation" class="original-input" v-model="registerForm.password_confirmation">
         <div>
-          <button type="submit">regist</button>
+          <button type="submit" class="original-input">regist</button>
         </div>
       </form>
     </div>
