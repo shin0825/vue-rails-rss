@@ -1,11 +1,5 @@
 <template>
-  <nav>
-    <RouterLink to="/">
-      HOME
-    </RouterLink>
-    <RouterLink v-if="isLogin" :to="{ name: 'LinkNewPage' }">
-      + ADD
-    </RouterLink>
+  <nav class="flex-box">
     <div>
       <span v-if="isLogin">
         {{ username }}
@@ -18,8 +12,29 @@
         </RouterLink>
       </div>
     </div>
+    <div>
+      <ul class="flex-box">
+        <li><RouterLink to="/">
+          HOME
+        </RouterLink></li>
+        <li><RouterLink v-if="isLogin" :to="{ name: 'LinkNewPage' }">
+          ADD
+        </RouterLink></li>
+      </ul>
+    </div>
   </nav>
 </template>
+
+<style>
+.flex-box {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-box li{
+  margin-left:30px;
+  list-style:none;
+}
+</style>
 
 <script>
 export default {

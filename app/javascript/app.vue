@@ -3,7 +3,7 @@
     <header id="nav-top" class="nav mb-5">
       <Navbar/>
     </header>
-    <main>
+    <main id="nav-main">
       <div class="container">
         <RouterView />
       </div>
@@ -29,8 +29,16 @@ export default {
   #nav-top {
     display: block;
     width: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 9999;
     text-align: center;
-    padding: 0 auto;
+    padding: 1rem;
+    background-color: #2366d136;
+  }
+  #nav-main {
+    margin-top: 50px;
   }
 }
 
@@ -44,7 +52,10 @@ export default {
     z-index: 9999;
     text-align: center;
     padding: 1rem;
-    background-color: #62d9a3ee;
+    background-color: #2366d136;
+  }
+  #nav-main {
+    margin-bottom: 50px;
   }
 }
 </style>
