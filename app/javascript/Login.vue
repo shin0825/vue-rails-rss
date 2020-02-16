@@ -35,15 +35,15 @@
             <li><input type="password" id="register-password" class="input original-input" v-model="registerForm.password"></li>
             <li><label for="register-password_confirmation">Password(確認)</label></li>
             <li><input type="password" id="register-password_confirmation" class="input original-input" v-model="registerForm.password_confirmation"></li>
-            <li><button type="submit" class="original-input">regist</button></li>
+            <li><button type="submit" class="input original-input">regist</button></li>
           </ul>
         </form>
       </div>
     </div>
     <div class="tab">
       <ul>
-        <li v-show="tab === 2" @click="tab = 1">Login</li>
-        <li v-show="tab === 1" @click="tab = 2">Register</li>
+        <li v-show="tab === 2" @click="tab = 1">Sign In?</li>
+        <li v-show="tab === 1" @click="tab = 2">Sign Up?</li>
       </ul>
     </div>
   </div>
@@ -51,10 +51,14 @@
 
 <style scoped>
 .tab {
+  height: 20%;
+  margin: 35px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .tabpage {
-  height: 50vh;
+  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
