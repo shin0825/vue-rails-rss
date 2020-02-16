@@ -37,6 +37,7 @@
 }
 .url {
   font-size: 2em;
+  width: 90%;
 }
 .submit {
   font-size: 1.25em;
