@@ -8,7 +8,7 @@
             <li><input type="text" id="login-id" class="input original-input" v-model="loginForm.account_id"></li>
             <li><label for="login-password">Password</label></li>
             <li><input type="password" id="login-password" class="input original-input" v-model="loginForm.password"></li>
-            <li><button type="submit" class="submit original-input">login</button></li>
+            <li><button type="submit" class="submit original-input">Sign In!</button></li>
           </ul>
         </form>
       </div>
@@ -35,7 +35,7 @@
             <li><input type="password" id="register-password" class="input original-input" v-model="registerForm.password"></li>
             <li><label for="register-password_confirmation">Password(確認)</label></li>
             <li><input type="password" id="register-password_confirmation" class="input original-input" v-model="registerForm.password_confirmation"></li>
-            <li><button type="submit" class="input original-input">regist</button></li>
+            <li><button type="submit" class="submit original-input">Sign Up!</button></li>
           </ul>
         </form>
       </div>
