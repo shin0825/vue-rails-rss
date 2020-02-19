@@ -32,11 +32,6 @@ axios.defaults.headers.common = {
 };
 
 export default {
-  data: function () {
-    return {
-      links: []
-    }
-  },
   computed: {
     links () {
       return this.$store.state.links.datas
@@ -48,7 +43,7 @@ export default {
     },
   },
   mounted () {
-    readDatas();
+    this.readDatas();
   },
   filters: {
     moment: function (date) {
