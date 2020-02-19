@@ -37,10 +37,18 @@ export default {
       links: []
     }
   },
+  computed: {
+    links () {
+      return this.$store.state.links.datas
+    }
+  },
+  methods: {
+    async readDatas () {
+      await this.$store.dispatch('links/selectAll')
+    },
+  },
   mounted () {
-    axios
-      .get('/api/v1/links.json')
-      .then(response => (this.links = response.data))
+    readDatas();
   },
   filters: {
     moment: function (date) {
