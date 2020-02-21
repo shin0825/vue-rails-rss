@@ -6,7 +6,11 @@ class Api::V1::LinksController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
 
   def index
-    links = current_user.links.select(:id, :title, :url, :created_at).order_by_created_at_desc
+    if @targetDate
+      links = current_user.links.select(:id, :title, :url, :created_at).where(created_at: @targetDate.in_time_zone.all_month).order_by_created_at_desc
+    else
+      links = current_user.links.select(:id, :title, :url, :created_at).order_by_created_at_desc
+    end
     render json: links
   end
 
