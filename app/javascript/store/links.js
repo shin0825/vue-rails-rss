@@ -19,6 +19,11 @@ const actions = {
     const response = await axios.get('/api/v1/links')
     const links = response.data || []
     context.commit('setDatas', links)
+  },
+  async selectByMonth(context, year, month) {
+    const response = await axios.get(`/api/v1/links/${year}/${month}`)
+    const links = response.data || []
+    context.commit('setDatas', links)
   }
 }
 

@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     async readDatas () {
-      await this.$store.dispatch('links/selectAll')
+      await this.$store.dispatch('links/selectByMonth', '2020', '02')
     },
   },
   mounted () {

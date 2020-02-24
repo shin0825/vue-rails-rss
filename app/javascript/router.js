@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LinkIndexPage from 'LinkIndexPage.vue'
+import LinkPerMonthPage from 'LinkPerMonthPage.vue'
 import LinkDetailPage from 'LinkDetailPage.vue'
 import LinkNewPage from 'LinkNewPage.vue'
 import Login from 'Login.vue'
@@ -13,6 +14,17 @@ const router = new VueRouter({
   routes: [{
       path: '/',
       component: LinkIndexPage,
+      beforeEnter(to, from, next) {
+        if (store.getters['auth/check']) {
+          next()
+        } else {
+          next('/login')
+        }
+      }
+    },
+    {
+      path: '/links/:year(\\d+)/:month(\\d+)',
+      component: LinkPerMonthPage,
       beforeEnter(to, from, next) {
         if (store.getters['auth/check']) {
           next()
