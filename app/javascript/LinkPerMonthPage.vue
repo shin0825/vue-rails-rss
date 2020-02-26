@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     async readDatas () {
-      await this.$store.dispatch('links/selectByMonth', '2020', '02')
+      await this.$store.dispatch('links/selectByMonth', { year: this.$route.params.year, month: this.$route.params.month} )
     },
   },
   mounted () {
