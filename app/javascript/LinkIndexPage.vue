@@ -5,16 +5,23 @@
         <div class="columns is-variable is-12" v-for="link in links" :key="link.id">
           <div class="column is-10 is-half">
             <div class="content is-medium">
-              <h2 class="subtitle is-5 has-text-grey">
-                <router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">
-                  {{ link.created_at | moment }}
-                </router-link>
-              </h2>
-              <h1 class="title has-text-black is-3">
+              <div class="flexbox subtitle is-5 has-text-grey">
+                <div>
+                  <router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">
+                    {{ link.created_at | moment }}
+                  </router-link>
+                </div>
+                <div class="left-margin " v-if="link.tweet_url">
+                  <a v-bind:href="link.tweet_url" onclick="window.open(this.href,'hoge', 'height=400, width=600');return false;">
+                    Tweet
+                  </a>
+                </div>
+              </div>
+              <div class="title has-text-black is-3">
                 <a v-bind:href="link.url" target=”_blank” rel=”noopener”>
                   {{ link.title }}
                 </a>
-              </h1>
+              </div>
             </div>
           </div>
         </div>
@@ -54,6 +61,15 @@ export default {
 </script>
 
 <style scoped>
+
+div.flexbox {
+  display: flex;
+}
+
+div.left-margin {
+  margin-left: 10px;
+}
+
 p {
   font-size: 2em;
   text-align: center;

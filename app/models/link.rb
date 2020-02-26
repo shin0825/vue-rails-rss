@@ -2,7 +2,7 @@ class Link < ApplicationRecord
   validates :url, presence: true
   validate :check_url
 
-  after_validation :set_title
+  after_validation :set_title, :set_tweet_url
 
   def check_url
     if url !~ /\A^(http|https)?:\/\/([-\w]+\.)+[-\w]+(\/[-\w.\/?%&=#@]*)?$\z/
@@ -25,5 +25,15 @@ class Link < ApplicationRecord
       mechan = Mechanize.new
       page = mechan.get(self.url)
       self.title = page.search('title').inner_text
+    end
+
+    def set_tweet_url
+      self.tweet_url = URI.encode(
+        "http://twitter.com/intent/tweet?original_referer=" +
+        "&url=" +
+        self.url +
+        "&text=" +
+        self.title
+      )
     end
 end
