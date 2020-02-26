@@ -32,7 +32,7 @@ class Link < ApplicationRecord
         "http://twitter.com/intent/tweet?original_referer=" +
         "&url=" +
         self.url +
-        "&text=" +
+        "&text=#reading " +
         self.title
       )
     end

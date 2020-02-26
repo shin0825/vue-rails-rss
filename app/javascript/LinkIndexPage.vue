@@ -11,8 +11,8 @@
                     {{ link.created_at | moment }}
                   </router-link>
                 </div>
-                <div class="left-margin " v-if="link.tweet_url">
-                  <a v-bind:href="link.tweet_url" onclick="window.open(this.href,'hoge', 'height=400, width=600');return false;">
+                <div class="left-margin" v-if="link.tweet_url">
+                  <a class="tweet" v-bind:href="link.tweet_url" target="_blank" rel=”noopener”>
                     Tweet
                   </a>
                 </div>
@@ -68,6 +68,19 @@ div.flexbox {
 
 div.left-margin {
   margin-left: 10px;
+}
+
+.tweet {
+  background-color: #3273dc;
+  color: #ffffff;
+  border-radius: 2px;
+  padding:2px 10px;
+  transition: all .3s;
+}
+
+.tweet:hover {
+  background-color: #ffffff;
+  color: #3273dc;
 }
 
 p {
