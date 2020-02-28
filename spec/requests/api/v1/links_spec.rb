@@ -12,7 +12,11 @@ RSpec.describe 'LinksAPI' do
         get api_v1_links_path
         json = JSON.parse(response.body)
 
-        expect(response.status).to eq(401) #FIXME: 戻り値がおかしいのでAPIのステータス設計を見直す
+        # リクエスト成功を表す200が返ってきたか確認する。
+        expect(response.status).to eq(200)
+
+        # 正しい数のデータが返されたか確認する。
+        expect(json.length).to eq(10)
       end
     end
 
@@ -81,6 +85,26 @@ RSpec.describe 'LinksAPI' do
 
       it 'should be not increment Link' do
         expect { post api_v1_links_path, params: @params }.not_to change(Link, :count)
+      end
+    end
+  end
+
+  describe 'DELETE /api/v1/links/:id' do
+    context 'Normal Parameter' do
+      before do
+        @headers = { "CONTENT_TYPE" => "application/json" }
+        @user = FactoryBot.create(:user)
+        @delete = FactoryBot.create(:link)
+        post api_v1_sign_in_path, params: { :session => { :account_id => @user.account_id, :password => @user.password } }
+      end
+
+      it 'should be 200 Success' do
+        delete api_v1_link_path(@delete.id), params: '{ "link": { "id":"' + @delete.id.to_s + '", "user_id":"' + @delete.user_id.to_s + '" } }', headers: @headers
+        expect(response.status).to eq(200)
+      end
+
+      it 'should be increment Link' do
+        expect { delete api_v1_link_path(@delete.id), params: '{ "link": { "id":"' + @delete.id.to_s + '", "user_id":"' + @delete.user_id.to_s + '" } }', headers: @headers }.to change(Link, :count).by(-1)
       end
     end
   end

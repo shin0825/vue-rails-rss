@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api, {format: 'json'} do
     namespace :v1 do
       get       'links/:year/:month', to: 'links#index', as: 'links/index'
-      resources :links, only: [:index, :show, :create]
+      resources :links, only: [:index, :show, :create, :destroy]
       post   'sign_up', to: 'users#create'
       get    'sign_in', to: 'sessions#new'
       get    'me', to: 'sessions#show'

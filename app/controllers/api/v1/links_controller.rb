@@ -42,7 +42,8 @@ class Api::V1::LinksController < ApplicationController
   end
 
   def destroy
-
+    @link.destroy
+    response_success(:link, :delete)
   end
 
   private
