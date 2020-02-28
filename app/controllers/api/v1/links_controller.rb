@@ -1,15 +1,15 @@
 class Api::V1::LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :set_target_date, only: :index
-  before_action :authenticate_user, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user, only: [:new, :edit, :create, :update, :destroy]
   rescue_from Exception, with: :render_status_500
   rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
 
   def index
     if @targetDate
-      links = current_user.links.select(:id, :title, :url, :tweet_url, :created_at).where(created_at: @targetDate.in_time_zone.all_month).order_by_created_at_desc
+      links = Link.select(:id, :title, :url, :tweet_url, :created_at).where(created_at: @targetDate.in_time_zone.all_month).order_by_created_at_desc
     else
-      links = current_user.links.select(:id, :title, :url, :tweet_url, :created_at).order_by_created_at_desc
+      links = Link.select(:id, :title, :url, :tweet_url, :created_at).order_by_created_at_desc
     end
     render json: links
   end
@@ -59,7 +59,7 @@ class Api::V1::LinksController < ApplicationController
     end
 
     def set_link
-      @link = current_user.links.find(params[:id])
+      @link = Link.find(params[:id])
     end
 
     def render_status_404(exception)

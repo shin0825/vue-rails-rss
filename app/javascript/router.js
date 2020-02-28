@@ -13,25 +13,11 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [{
       path: '/',
-      component: LinkIndexPage,
-      beforeEnter(to, from, next) {
-        if (store.getters['auth/check']) {
-          next()
-        } else {
-          next('/login')
-        }
-      }
+      component: LinkIndexPage
     },
     {
       path: '/links/:year(\\d+)/:month(\\d+)',
-      component: LinkPerMonthPage,
-      beforeEnter(to, from, next) {
-        if (store.getters['auth/check']) {
-          next()
-        } else {
-          next('/login')
-        }
-      }
+      component: LinkPerMonthPage
     },
     {
       path: '/links/:id(\\d+)',

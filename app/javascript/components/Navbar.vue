@@ -9,7 +9,7 @@
     </div>
     <div>
       <ul class="flex-box">
-        <li v-if="isLogin"><RouterLink to="/">
+        <li><RouterLink to="/">
           HOME
         </RouterLink></li>
         <li v-if="isLogin"><RouterLink :to="{ name: 'LinkNewPage' }">
