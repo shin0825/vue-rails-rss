@@ -28,6 +28,8 @@ class Link < ApplicationRecord
     end
 
     def set_tweet_url
+      return if self.errors[:url].present?
+      return if self.errors[:title].present?
       self.tweet_url = URI.encode(
         "http://twitter.com/intent/tweet?original_referer=" +
         "&url=" +
