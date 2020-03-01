@@ -5,22 +5,26 @@
         <div class="columns is-variable is-12" v-for="link in links" :key="link.id">
           <div class="column is-10 is-half">
             <div class="content is-medium">
-              <div class="flexbox subtitle is-5 has-text-grey">
-                <div>
-                  <router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">
-                    {{ link.created_at | moment }}
-                  </router-link>
+              <div class="card">
+                <div class="card-content">
+                  <p class="title">
+                    <a v-bind:href="link.url" target=”_blank” rel=”noopener”>
+                      {{ link.title }}
+                    </a>
+                  </p>
+                  <p class="subtitle">
+                    <router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">
+                      {{ link.created_at | moment }}
+                    </router-link>
+                  </p>
                 </div>
-                <div class="left-margin" v-if="link.tweet_url">
-                  <a class="tweet" v-bind:href="link.tweet_url" target="_blank" rel=”noopener”>
-                    Tweet
-                  </a>
-                </div>
-              </div>
-              <div class="title has-text-black is-3">
-                <a v-bind:href="link.url" target=”_blank” rel=”noopener”>
-                  {{ link.title }}
-                </a>
+                <footer class="card-footer">
+                  <p class="card-footer-item">
+                    <a class="tweet" v-bind:href="link.tweet_url" target="_blank" rel=”noopener”>
+                      Tweet
+                    </a>
+                  </p>
+                </footer>
               </div>
             </div>
           </div>
