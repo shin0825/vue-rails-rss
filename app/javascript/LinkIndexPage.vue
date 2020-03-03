@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <section class="section">
-        <div class="columns is-variable is-12">
+        <div class="columns is-variable is-multiline is-6">
           <div class="cards column is-6 is-half" v-for="link in links" :key="link.id">
             <div class="content is-medium">
               <LinkCard v-bind:link="link"/>
@@ -17,6 +17,10 @@
 <style scoped>
 div.cards {
   margin: 0 auto;
+}
+
+div.content {
+  height: 100%;
 }
 </style>
 

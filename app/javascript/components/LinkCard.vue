@@ -11,7 +11,7 @@
       </p>
     </div>
     <footer class="card-footer">
-      <p class="card-footer-item">
+      <p class="is-marginless card-footer-item">
         <router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">
           {{ link.created_at | moment }}
         </router-link>
@@ -26,6 +26,16 @@
 </template>
 
 <style scoped>
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content {
+    height: 100%;
+}
+
 .moment {
   margin: 1px;
 }
