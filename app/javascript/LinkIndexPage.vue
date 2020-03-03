@@ -2,8 +2,8 @@
   <div>
     <div class="container">
       <section class="section">
-        <div class="columns is-variable is-12" v-for="link in links" :key="link.id">
-          <div class="cards column is-10 is-half">
+        <div class="columns is-variable is-12">
+          <div class="cards column is-6 is-half" v-for="link in links" :key="link.id">
             <div class="content is-medium">
               <LinkCard v-bind:link="link"/>
             </div>
@@ -21,7 +21,6 @@ div.cards {
 </style>
 
 <script>
-import moment from 'moment'
 import axios from 'axios'
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -45,11 +44,6 @@ export default {
   },
   mounted () {
     this.readDatas();
-  },
-  filters: {
-    moment: function (date) {
-      return moment(date).format('YYYY/MM/DD HH:mm');
-    }
   }
 }
 </script>

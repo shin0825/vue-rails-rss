@@ -7,12 +7,15 @@
         </a>
       </p>
       <p class="subtitle">
+          {{ link.url }}
+      </p>
+    </div>
+    <footer class="card-footer">
+      <p class="card-footer-item">
         <router-link :to="{ name: 'LinkDetailPage', params: { id: link.id } }">
           {{ link.created_at | moment }}
         </router-link>
       </p>
-    </div>
-    <footer class="card-footer">
       <p class="card-footer-item">
         <a class="tweet" v-bind:href="link.tweet_url" target="_blank" rel=”noopener”>
           Tweet
@@ -23,6 +26,10 @@
 </template>
 
 <style scoped>
+.moment {
+  margin: 1px;
+}
+
 .tweet {
   background-color: #3273dc;
   color: #ffffff;
@@ -44,9 +51,17 @@ p {
 
 
 <script>
+import moment from 'moment'
 export default {
   props: {
-    'link': []
+    link: {
+      type: Object
+    }
+  },
+  filters: {
+    moment: function (date) {
+      return moment(date).format('YYYY/MM/DD HH:mm');
+    }
   }
 }
 </script>
