@@ -7,15 +7,15 @@ class Api::V1::LinksController < ApplicationController
 
   def index
     if @targetDate
-      links = Link.select(:id, :title, :url, :tweet_url, :created_at).where(created_at: @targetDate.in_time_zone.all_month).order_by_created_at_desc
+      links = Link.select(:id, :title, :url, :tweet_url, :created_at, :user_id).where(created_at: @targetDate.in_time_zone.all_month).order_by_created_at_desc
     else
-      links = Link.select(:id, :title, :url, :tweet_url, :created_at).order_by_created_at_desc
+      links = Link.select(:id, :title, :url, :tweet_url, :created_at, :user_id).order_by_created_at_desc
     end
-    render json: links
+    render json: links.to_json(:include => [{user: {only: [:account_id, :name]}}])
   end
 
   def show
-    render json: @link
+    render json: @link.to_json(:include => [{user: {only: [:account_id, :name]}}])
   end
 
   def new
