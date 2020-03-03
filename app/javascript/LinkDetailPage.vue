@@ -1,17 +1,59 @@
 <template>
-  <div>
-    <button v-on:click="destroyLink">Delete this</button>
-    <dl>
-      <dt>ID</dt>
-      <dd>{{ link.id }}</dd>
-      <dt>Title</dt>
-      <dd>{{ link.title }}</dd>
-      <dt>Url</dt>
-      <dd>{{ link.url }}</dd>
-    </dl>
+  <div class="detail">
+    <div class="table-container">
+      <p class="title">
+        <a v-bind:href="link.url" target=”_blank” rel=”noopener”>
+          {{ link.title }}
+        </a>
+      </p>
+      <table class="table is-striped">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ID</td>
+            <td>{{ link.id }}</td>
+          </tr>
+          <tr>
+            <td>Title</td>
+            <td>{{ link.title }}</td>
+          </tr>
+          <tr>
+            <td>Url</td>
+            <td>{{ link.url }}</td>
+          </tr>
+          <tr>
+            <td>Created At</td>
+            <td>{{ link.created_at }}</td>
+          </tr>
+          <tr v-if="link.user">
+            <td>Created User</td>
+            <td>{{ link.user.name }}</td>
+          </tr>
+          <tr v-if="link.user">
+            <td>Created User ID</td>
+            <td>{{ link.user.account_id }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button v-if="isLogin" v-on:click="destroyLink">Delete this</button>
     <router-link :to="{ path: '/' }">back</router-link>
   </div>
 </template>
+
+<style>
+.detail {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
 
 <script>
 import axios from 'axios'
@@ -20,6 +62,11 @@ export default {
   data: function () {
     return {
       link: {}
+    }
+  },
+  computed: {
+    isLogin () {
+      return this.$store.getters['auth/check']
     }
   },
   mounted () {
