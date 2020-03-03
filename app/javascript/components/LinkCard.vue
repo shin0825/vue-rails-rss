@@ -7,7 +7,7 @@
         </a>
       </p>
       <p class="subtitle">
-          {{ link.url }}
+          add by {{ link.user.name }}
       </p>
     </div>
     <footer class="card-footer">
