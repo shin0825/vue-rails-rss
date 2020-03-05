@@ -40,9 +40,9 @@
           </tr>
         </tbody>
       </table>
+      <button v-if="isLogin" v-on:click="destroyLink">Delete this</button>
+      <router-link :to="{ path: '/' }">back</router-link>
     </div>
-    <button v-if="isLogin" v-on:click="destroyLink">Delete this</button>
-    <router-link :to="{ path: '/' }">back</router-link>
   </div>
 </template>
 
