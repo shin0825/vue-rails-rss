@@ -17,6 +17,7 @@ const router = new VueRouter({
     },
     {
       path: '/links/:year(\\d+)/:month(\\d+)',
+      name: 'LinkPerMonthPage',
       component: LinkPerMonthPage
     },
     {
