@@ -12,6 +12,10 @@
         <li><RouterLink to="/">
           HOME
         </RouterLink></li>
+        <li>
+          <router-link :to="{ name: 'LinkPerMonthPage', params: { year: this.$store.state.links.year, month: this.$store.state.links.month} }">
+            ARCHIVE
+          </router-link></li>
         <li v-if="isLogin"><RouterLink :to="{ name: 'LinkNewPage' }">
           ADD
         </RouterLink></li>

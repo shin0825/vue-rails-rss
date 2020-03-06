@@ -24,14 +24,17 @@ const actions = {
   async selectAll(context) {
     const response = await axios.get('/api/v1/links')
     const links = response.data || []
-    context.commit('setDatas', links)
-    context.commit('setYearMonth', {year: 2020, month: 3})
+    await context.commit('setYearMonth', {
+      year: 2020,
+      month: 3
+    })
+    await context.commit('setDatas', links)
   },
   async selectByMonth(context, yearmonth) {
     const response = await axios.get(`/api/v1/links/${yearmonth.year}/${yearmonth.month}`)
     const links = response.data || []
-    context.commit('setDatas', links)
-    context.commit('setYearMonth', yearmonth)
+    await context.commit('setYearMonth', yearmonth)
+    await context.commit('setDatas', links)
   }
 }
 

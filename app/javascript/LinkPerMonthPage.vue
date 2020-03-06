@@ -50,8 +50,11 @@ export default {
       await this.$store.dispatch('links/selectByMonth', { year: this.$route.params.year, month: this.$route.params.month} )
     },
   },
+  watch: {
+    '$route': 'readDatas'
+  },
   mounted () {
     this.readDatas();
-  }
+  },
 }
 </script>
