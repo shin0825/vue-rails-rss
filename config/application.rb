@@ -24,5 +24,7 @@ module App
                   routing_specs: false
       generator.fixture_replacement :factory_bot, dir: "spec/factories"
     end
+
+    config.time_zone = 'Tokyo'
   end
 end

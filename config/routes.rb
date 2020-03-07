@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'homes#index'
   namespace :api, {format: 'json'} do
     namespace :v1 do
+      get    'links_lists', to: 'links/yearmonths#index'
       get       'links/:year/:month', to: 'links#index', as: 'links/index'
       resources :links, only: [:index, :show, :create, :destroy]
       post   'sign_up', to: 'users#create'
