@@ -2,10 +2,15 @@
   <div>
     <div class="container">
       <section class="section">
+        <div class="columns is-variable is-12">
+          <select>
+              <option disabled value="">選択して下さい</option>
+              <option v-for="yearmonth in yearmonths" v-bind:value="yearmonth.name" v-bind:key="yearmonth.name">
+                  {{ yearmonth.name }}
+              </option>
+          </select>
+        </div>
         <div class="columns is-variable is-multiline is-6">
-          <router-link :to="{ name: 'LinkPerMonthPage', params: { year: this.$store.state.links.year, month: this.$store.state.links.month - 1 } }">
-            BACK
-          </router-link>
           <div class="cards column is-6 is-half" v-for="link in links" :key="link.id">
             <div class="content is-medium">
               <LinkCard v-bind:link="link"/>
@@ -43,6 +48,9 @@ export default {
   computed: {
     links () {
       return this.$store.state.links.datas
+    },
+    yearmonths () {
+      return this.$store.state.links.yearmonths
     }
   },
   methods: {
