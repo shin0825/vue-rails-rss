@@ -3,7 +3,7 @@
     <div class="container">
       <section class="section">
         <div class="columns is-variable is-12">
-          <select>
+          <select v-on:change="readYearMonths">
               <option disabled value="">選択して下さい</option>
               <option v-for="yearmonth in yearmonths" v-bind:value="yearmonth.name" v-bind:key="yearmonth.name">
                   {{ yearmonth.name }}
@@ -56,6 +56,9 @@ export default {
   methods: {
     async readDatas () {
       await this.$store.dispatch('links/selectByMonth', { year: this.$route.params.year, month: this.$route.params.month} )
+    },
+    async readYearMonths (e) {
+      await this.$store.dispatch('links/selectByMonth', { year: String(e.target.value).substring(0, 4), month: String(e.target.value).substring(4, 6)} )
     },
   },
   watch: {
