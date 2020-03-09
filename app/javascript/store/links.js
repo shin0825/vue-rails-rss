@@ -26,17 +26,17 @@ const mutations = {
 
 const actions = {
   async selectAll(context) {
-    const response = await axios.get('/api/v1/links')
-    const links = response.data || []
-    await context.commit('setYearMonth', {
-      year: 2020,
-      month: 3
-    })
-    await context.commit('setDatas', links)
-
     const links_lists = await axios.get('/api/v1/links_lists')
     const yearmonths = links_lists.data || []
     await context.commit('setYearMonths', yearmonths)
+
+    const response = await axios.get('/api/v1/links')
+    const links = response.data || []
+    await context.commit('setYearMonth', {
+      year: yearmonths[0].year,
+      month: yearmonths[0].month
+    })
+    await context.commit('setDatas', links)
   },
   async selectByMonth(context, yearmonth) {
     const response = await axios.get(`/api/v1/links/${yearmonth.year}/${yearmonth.month}`)
