@@ -63,6 +63,9 @@
   
     https://level-up-notebook.com/css/1214/
     https://qiita.com/katonobo1/items/cac607cf0bb70977eb0c
+    
+  - axiosのヘッダーにCSRFトークンを設定する
+    https://qiita.com/ngron/items/2faae8068baa093d6aba
 
 ## 仕様
 - URLを
