@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Link, type: :model do
+  before do
+    @user = FactoryBot.create(:user)
+  end
+
   # TODO: ファクトリの作成
   it "is valid normal URL" do
     link = Link.new(
