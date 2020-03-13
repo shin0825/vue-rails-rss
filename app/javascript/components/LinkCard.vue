@@ -1,14 +1,20 @@
 <template>
   <div class="card">
     <div class="card-content">
-      <p class="title">
-        <a v-bind:href="link.url" target=”_blank” rel=”noopener”>
-          {{ link.title }}
-        </a>
-      </p>
-      <p class="subtitle">
-          add by {{ link.user.name }}
-      </p>
+      <div class="card-item">
+        <div class="usernameplate">
+          <p>
+          {{ link.user.name }}
+          </p>
+        </div>
+        <div>
+          <p class="title">
+            <a v-bind:href="link.url" target=”_blank” rel=”noopener”>
+              {{ link.title }}
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
     <footer class="card-footer">
       <p class="is-marginless card-footer-item">
@@ -26,6 +32,31 @@
 </template>
 
 <style scoped>
+.card-item{
+  display: flex;
+  width: 100%;
+}
+
+.usernameplate {
+  display: flex;
+  overflow: hidden;
+  border-radius: 2em;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  flex-shrink: 0;
+  margin-right: .5em;
+  margin-bottom: .5em;
+  background-color: #3273dc;
+  color: #e8e8e8;
+}
+
+.usernameplate p {
+  margin: 0 auto;
+  width: 80px;
+  white-space: nowrap;
+}
+
 .card {
   height: 100%;
   display: flex;
