@@ -40,10 +40,11 @@
 .usernameplate {
   display: flex;
   overflow: hidden;
-  border-radius: 2em;
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  width: 4.5em;
+  height: 4.5em;
   flex-shrink: 0;
   margin-right: .5em;
   margin-bottom: .5em;
@@ -52,15 +53,17 @@
 }
 
 .usernameplate p {
+  font-weight: bold;
   margin: 0 auto;
-  width: 80px;
-  white-space: nowrap;
+  width: 3em;
+  white-space: normal;
 }
 
 .card {
   height: 100%;
   display: flex;
   flex-direction: column;
+  font-size: smaller;
 }
 
 .card-content {
@@ -74,7 +77,7 @@
 .tweet {
   background-color: #3273dc;
   color: #ffffff;
-  border-radius: 2px;
+  border-radius: 0.25em;
   padding:2px 10px;
   transition: all .3s;
 }
