@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import UserPage from 'UserPage.vue'
 import LinkIndexPage from 'LinkIndexPage.vue'
 import LinkPerMonthPage from 'LinkPerMonthPage.vue'
 import LinkDetailPage from 'LinkDetailPage.vue'
@@ -24,6 +25,11 @@ const router = new VueRouter({
       path: '/links/:id(\\d+)',
       name: 'LinkDetailPage',
       component: LinkDetailPage
+    },
+    {
+      path: '/users/:account_id',
+      name: 'UserPage',
+      component: UserPage
     },
     {
       path: '/links/new',

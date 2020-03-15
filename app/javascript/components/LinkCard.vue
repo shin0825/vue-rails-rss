@@ -2,11 +2,11 @@
   <div class="card">
     <div class="card-content">
       <div class="card-item">
-        <div class="usernameplate">
+        <router-link class="usernameplate link" :to="{ name: 'UserPage', params: { account_id: link.user.account_id } }">
           <p>
-          {{ link.user.name }}
+            {{ link.user.name }}
           </p>
-        </div>
+        </router-link>
         <div>
           <p class="title">
             <a v-bind:href="link.url" target=”_blank” rel=”noopener”>
@@ -23,7 +23,7 @@
         </router-link>
       </p>
       <p class="card-footer-item">
-        <a class="tweet" v-bind:href="link.tweet_url" target="_blank" rel=”noopener”>
+        <a class="tweet link" v-bind:href="link.tweet_url" target="_blank" rel=”noopener”>
           Tweet
         </a>
       </p>
@@ -48,8 +48,6 @@
   flex-shrink: 0;
   margin-right: .5em;
   margin-bottom: .5em;
-  background-color: #3273dc;
-  color: #e8e8e8;
 }
 
 .usernameplate p {
@@ -75,14 +73,17 @@
 }
 
 .tweet {
-  background-color: #3273dc;
-  color: #ffffff;
   border-radius: 0.25em;
   padding:2px 10px;
+}
+
+.link {
+  background-color: #3273dc;
+  color: #ffffff;
   transition: all .3s;
 }
 
-.tweet:hover {
+.link:hover {
   background-color: #ffffff;
   color: #3273dc;
 }

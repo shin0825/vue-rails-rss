@@ -47,6 +47,11 @@ const actions = {
     const links_lists = await axios.get('/api/v1/links_lists')
     const yearmonths = links_lists.data || []
     await context.commit('setYearMonths', yearmonths)
+  },
+  async selectByAccountId(context, account_id) {
+    const response = await axios.get(`/api/v1/users/${account_id}`)
+    const links = response.data || []
+    await context.commit('setDatas', links)
   }
 }
 
