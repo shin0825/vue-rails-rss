@@ -1,4 +1,9 @@
 class Api::V1::UsersController < ApplicationController
+  def show
+    user = User.find_by(account_id: params[:account_id])
+    links = user.links.select(:id, :title, :url, :tweet_url, :created_at, :user_id).order_by_created_at_desc
+    render json: links.to_json(:include => [{user: {only: [:account_id, :name]}}])
+  end
 
   def create
     @user = User.new(user_params)
