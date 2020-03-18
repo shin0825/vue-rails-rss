@@ -42,8 +42,12 @@ class Api::V1::LinksController < ApplicationController
   end
 
   def destroy
-    @link.destroy
-    response_success(:link, :delete)
+    if current_user_id?(@link.user_id)
+      @link.destroy
+      response_success(:link, :delete)
+    else
+      render json: { errors: "ユーザーが異なっています" }, status: :unprocessable_entity
+    end
   end
 
   private
