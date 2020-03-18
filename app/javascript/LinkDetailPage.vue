@@ -64,8 +64,11 @@ export default {
     }
   },
   computed: {
+    isLinkByLoginUser () {
+      return this.$store.getters['auth/isLoginUser'](this.link.user_id)
+    },
     isLogin () {
-      return this.$store.getters['auth/check']
+      return this.$store.getters['auth/check'] && this.isLinkByLoginUser
     }
   },
   mounted () {
