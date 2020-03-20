@@ -2,6 +2,13 @@
   <div>
     <div class="container">
       <section class="section">
+        <div class="columns is-variable is-full">
+          <div class="title account-id">
+            <p>
+              @{{ this.$route.params.account_id }}
+            </p>
+          </div>
+        </div>
         <div class="columns is-variable is-multiline is-6">
           <div class="cards column is-6 is-half" v-for="link in links" :key="link.id">
             <div class="content is-medium">
@@ -15,6 +22,13 @@
 </template>
 
 <style scoped>
+div.account-id {
+  margin: 0 auto;
+  padding-bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
 div.cards {
   margin: 0 auto;
 }
