@@ -10,6 +10,12 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
+  it "is valid destroy user with links" do
+    user = FactoryBot.create(:user)
+    FactoryBot.create_list(:link, 10, user_id: user.id)
+    expect{ user.destroy }.to change{ Link.count }.by(-10)
+  end
+
   # TODO: ファクトリの作成
   it "is invalid duplicate account_id" do
     user = FactoryBot.create(:user, account_id: "hoge")
