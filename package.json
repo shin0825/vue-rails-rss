@@ -15,7 +15,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest-transform-stub": "^2.0.0",
     "moment": "^2.26.0",
-    "serialize-javascript": "^2.1.2",
+    "serialize-javascript": "^3.1.0",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.2",
