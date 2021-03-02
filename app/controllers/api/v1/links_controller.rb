@@ -1,5 +1,6 @@
 class Api::V1::LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :twitter_client, only: [:create]
   before_action :set_target_date, only: :index
   before_action :authenticate_user, only: [:new, :edit, :create, :update, :destroy]
   rescue_from Exception, with: :render_status_500
@@ -30,6 +31,7 @@ class Api::V1::LinksController < ApplicationController
     link = current_user.links.build(link_params)
 
     if link.save
+      @client.update("bot: 記事メモった https://nameless-tundra-72223.herokuapp.com/#/ \r")
       # render json: link, status: :created
       response_created(:link)
     else
@@ -73,5 +75,14 @@ class Api::V1::LinksController < ApplicationController
 
     def render_status_500(exception)
       render json: { errors: [exception] }, status: 500
+    end
+
+    def twitter_client
+      @client = Twitter::REST::Client.new do |config|
+        config.consumer_key        = ENV['api_key']
+        config.consumer_secret     = ENV['api_secret_key']
+        config.access_token        = ENV['access_token']
+        config.access_token_secret = ENV['access_token_secret']
+      end
     end
 end
