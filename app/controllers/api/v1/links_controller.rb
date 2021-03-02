@@ -1,6 +1,6 @@
 class Api::V1::LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
-  before_action :twitter_client, only: [:create]
+  # before_action :twitter_client, only: [:create]
   before_action :set_target_date, only: :index
   before_action :authenticate_user, only: [:new, :edit, :create, :update, :destroy]
   rescue_from Exception, with: :render_status_500
