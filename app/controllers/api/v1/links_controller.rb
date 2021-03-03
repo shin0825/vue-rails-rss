@@ -31,7 +31,6 @@ class Api::V1::LinksController < ApplicationController
     link = current_user.links.build(link_params)
 
     if link.save
-      @client.update("bot: 記事メモった https://nameless-tundra-72223.herokuapp.com/#/ \r")
       # render json: link, status: :created
       response_created(:link)
     else
@@ -84,5 +83,6 @@ class Api::V1::LinksController < ApplicationController
         config.access_token        = ENV['access_token']
         config.access_token_secret = ENV['access_token_secret']
       end
+      @client.update("bot: 記事メモった https://nameless-tundra-72223.herokuapp.com/#/ \r")
     end
 end
