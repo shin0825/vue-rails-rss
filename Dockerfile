@@ -1,7 +1,8 @@
 FROM ruby:2.6.3
 
 ENV LANG C.UTF-8
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get update && \
+
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && \
     apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
@@ -16,6 +17,8 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 ENV TZ=Asia/Tokyo
 
 RUN yarn add node-sass
+
+RUN gem install bundler:2.1.4
 
 RUN mkdir /app
 WORKDIR /app
